@@ -307,20 +307,28 @@ body{
    10 · ALCANCE DIGITAL — instagram / tiktok, dois painéis
    ══════════════════════════════════════════════════════════ */
 .s10{--ground:var(--black)}
-.s10 .dig{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
-.s10 .dpan{padding:clamp(26px,3.6vw,60px) clamp(22px,4.6vw,76px);display:flex;flex-direction:column;justify-content:center;gap:16px;border-right:1px solid rgba(255,255,255,.14)}
-.s10 .dpan:last-child{border-right:0}
-.s10 .dpan .eyeb{margin:0}
-.s10 .dpan h3{margin:0;font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 72;
-  font-size:clamp(20px,2.6vw,38px);letter-spacing:-.03em;color:#fff}
-.s10 .dpan .cnt{font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 70;
-  font-size:clamp(48px,7.4vw,108px);line-height:.85;letter-spacing:-.04em}
+.s10 .pad{padding-top:clamp(60px,7vw,92px)}
+.s10 .dig{flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.16)}
+.s10 .dpan{padding:0 clamp(22px,3.6vw,52px) clamp(18px,2.4vw,30px);display:flex;flex-direction:column;justify-content:center;gap:0;border-right:1px solid rgba(255,255,255,.16)}
+.s10 .dpan:last-child{border-right:0;padding-left:clamp(22px,3.6vw,52px)}
+.s10 .dpan .eyeb{margin-bottom:10px}
+.s10 .dpan .cnt{margin:0;font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 68;
+  font-size:clamp(42px,6.4vw,92px);line-height:.86;letter-spacing:-.04em}
+.s10 .dpan .cntlbl{display:block;margin-top:2px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .s10 .dig-ig .cnt{color:var(--utd-glow)}
 .s10 .dig-tt .cnt{color:var(--betis-glow)}
-.s10 .dpan p.tx{max-width:32ch}
-.s10 .digfoot{position:absolute;left:0;right:0;bottom:clamp(84px,7vw,104px);padding:18px clamp(22px,4.6vw,76px) 0;
-  border-top:1px solid rgba(255,255,255,.16);font-size:clamp(13px,1.05vw,17px);line-height:1.4;color:rgba(255,255,255,.78);max-width:70ch}
-.s10 .digfoot b{color:#fff;font-weight:600}
+.s10 .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16)}
+.s10 .stats3 b{display:block;font-family:"Archivo",sans-serif;font-weight:800;font-variation-settings:"wdth" 76;
+  font-size:clamp(16px,1.7vw,23px);color:#fff;letter-spacing:-.02em}
+.s10 .stats3 i{font-style:normal;display:block;margin-top:5px;font-size:10.5px;line-height:1.3;color:rgba(255,255,255,.6)}
+.s10 .digfoot{padding:18px clamp(22px,4.6vw,76px) 0}
+.s10 .digfoot>.eyeb{margin-bottom:14px;color:var(--betis-glow)}
+.s10 .foot3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.s10 .foot3 b{display:block;font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 66;
+  font-size:clamp(26px,3.2vw,44px);color:#fff;letter-spacing:-.03em;line-height:.9}
+.s10 .foot3 i{font-style:normal;display:block;margin-top:6px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.s10 .sumline{margin-top:16px;font-size:clamp(13px,1.05vw,16px);line-height:1.42;color:rgba(255,255,255,.82);max-width:74ch}
+.s10 .sumline b{color:#fff;font-weight:600}
 
 /* ══════════════════════════════════════════════════════════
    11 · FECHAMENTO — verde vivo, tipo preta (inversão total)
@@ -377,7 +385,7 @@ body{
    ══════════════════════════════════════════════════════════ */
 @media (max-width:900px){
   .s2 .base,.s4 .cols,.s5 .cred,.s8 .duo,.s11 .three,.s3 .top3{grid-template-columns:1fr}
-  .s10 .dig{grid-template-columns:1fr}
+  .s10 .dig,.s10 .stats3,.s10 .foot3{grid-template-columns:1fr}
   .s2 .base div+div,.s9 .metrics div+div{border-left:0;border-top:1px solid var(--line)}
   .s2 .base{position:static;margin-top:30px}
   .s2 .pad{justify-content:center}
@@ -619,21 +627,37 @@ body{
 <!-- ═══════════ 10 · ALCANCE DIGITAL ═══════════ -->
 <section class="s s10" data-lb="Alcance digital" data-p="neutral" data-tone="dark">
   <div class="num"><b>10</b> ⁄ 11</div>
-  <div class="dig">
-    <div class="dpan dig-ig">
-      <p class="eyeb">Instagram</p>
-      <h3 class="cnt">10,6M</h3>
-      <span class="pend" style="border-bottom:0">Seguidores</span>
-      <p class="tx">Maior base já engajada com a carreira internacional de Antony.</p>
+  <div class="pad">
+    <div class="dig">
+      <div class="dpan dig-ig">
+        <p class="eyeb" style="display:flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>Instagram</p>
+        <h3 class="cnt">10,6M<span class="cntlbl">Seguidores</span></h3>
+        <div class="stats3">
+          <div><b>16,9M</b><i>Visualizações em 30 dias</i></div>
+          <div><b>780,9K</b><i>Interações</i></div>
+          <div><b>95,3K</b><i>Novos seguidores</i></div>
+        </div>
+      </div>
+      <div class="dpan dig-tt">
+        <p class="eyeb" style="display:flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.4 2.2 1.9 3.7 4.1 4v3.1c-1.5 0-2.9-.4-4.1-1.2v6.5c0 3.1-2.5 5.6-5.6 5.6S5.4 18.5 5.4 15.4 7.9 9.8 11 9.8c.4 0 .8 0 1.1.1v3.1c-.3-.1-.7-.2-1.1-.2-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5 2.6-1.1 2.6-2.5V3h3z"/></svg>TikTok</p>
+        <h3 class="cnt">6,1M<span class="cntlbl">Seguidores</span></h3>
+        <div class="stats3">
+          <div><b>43,7M</b><i>Visualizações/ano</i></div>
+          <div><b>4,5M</b><i>Curtidas/ano</i></div>
+          <div><b>304K</b><i>Compartilhamentos/ano</i></div>
+        </div>
+      </div>
     </div>
-    <div class="dpan dig-tt">
-      <p class="eyeb">TikTok</p>
-      <h3 class="cnt">6,1M</h3>
-      <span class="pend" style="border-bottom:0">Seguidores</span>
-      <p class="tx">Formato de maior crescimento e alcance entre o público mais jovem.</p>
+    <div class="digfoot">
+      <p class="eyeb">Destaque geral</p>
+      <div class="foot3">
+        <div><b>16,7M</b><i>Seguidores</i></div>
+        <div><b>60,6M+</b><i>Visualizações</i></div>
+        <div><b>5,2M+</b><i>Interações / engajamentos</i></div>
+      </div>
+      <p class="sumline">Uma audiência de <b>16,7 milhões</b> de seguidores, com mais de <b>60 milhões</b> de visualizações somando Instagram e TikTok.</p>
     </div>
   </div>
-  <div class="digfoot">Mais de <b>43 milhões</b> de visualizações e <b>16,7 milhões</b> de seguidores, formando uma audiência altamente engajada.</div>
 </section>
 
 <!-- ═══════════ 11 · FECHAMENTO ═══════════ -->
