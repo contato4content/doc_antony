@@ -1,0 +1,660 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentário Antony — Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Inter:wght@400..700&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   PALETA — cor como território, não como acento
+   ══════════════════════════════════════════════════════════ */
+:root{
+  --black:#08090A;
+  --paper:#FFFFFF;
+
+  --betis-deep:#00663A;   /* verde manto — fundo com texto branco   */
+  --betis-night:#00301C;  /* verde escuro — fundo denso             */
+  --betis-live:#00A85A;   /* verde vivo — fundo com texto preto     */
+  --betis-glow:#26E886;   /* verde sinal — só traço, nunca área     */
+
+  --utd-red:#DA291C;      /* vermelho United — fundo com texto branco*/
+  --utd-blood:#8E1710;    /* vermelho escuro                        */
+  --utd-glow:#FF5548;     /* vermelho sinal                         */
+
+  --ground:var(--black);
+  --ink:#FFFFFF;
+  --mut:rgba(255,255,255,.62);
+  --line:rgba(255,255,255,.16);
+  --acc:var(--betis-glow);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--black);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOTOR DO DECK
+   ══════════════════════════════════════════════════════════ */
+.deck{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden}
+
+.s{
+  position:absolute;inset:0;
+  background:var(--ground);color:var(--ink);
+  opacity:0;visibility:hidden;
+  transition:opacity .38s ease,visibility 0s linear .38s;
+  overflow:hidden;
+}
+.s.on{opacity:1;visibility:visible;transition:opacity .38s ease,visibility 0s}
+
+/* moldura interna padrão — slides full-bleed a sobrescrevem */
+.pad{
+  position:absolute;inset:0;
+  padding:clamp(22px,3.6vw,60px) clamp(22px,4.6vw,76px) clamp(84px,7vw,104px);
+  display:flex;flex-direction:column;
+  overflow-y:auto;overscroll-behavior:contain;
+}
+.pad::-webkit-scrollbar{width:5px}
+.pad::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+
+/* número do slide — único elemento fixo em todos, canto superior direito */
+.num{
+  position:absolute;top:clamp(20px,3vw,42px);right:clamp(20px,4vw,54px);
+  z-index:6;font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--mut);
+  font-family:"Inter",sans-serif;
+}
+.num b{color:var(--ink);font-weight:700}
+
+/* animação de entrada */
+.s.on .up{animation:up .5s cubic-bezier(.2,.75,.2,1) both}
+.s.on .up:nth-child(1){animation-delay:.05s}
+.s.on .up:nth-child(2){animation-delay:.12s}
+.s.on .up:nth-child(3){animation-delay:.19s}
+.s.on .up:nth-child(4){animation-delay:.26s}
+.s.on .up:nth-child(5){animation-delay:.33s}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ══════════════════════════════════════════════════════════
+   TIPOGRAFIA — Archivo variável (display) + Inter (texto)
+   ══════════════════════════════════════════════════════════ */
+.dsp{
+  font-family:"Archivo","Inter",system-ui,sans-serif;
+  font-weight:800;line-height:.82;letter-spacing:-.045em;margin:0;
+  font-variation-settings:"wdth" 88;
+}
+.cond{font-variation-settings:"wdth" 66;font-weight:900;letter-spacing:-.03em}
+.wide{font-variation-settings:"wdth" 116;font-weight:500;letter-spacing:-.03em;line-height:1.02}
+
+.eyeb{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--mut);margin:0;font-family:"Inter",sans-serif;
+}
+.tx{font-size:clamp(13px,.98vw,16px);line-height:1.5;letter-spacing:-.01em;color:var(--mut);margin:0}
+.tx b{color:var(--ink);font-weight:600}
+.lead{font-size:clamp(15px,1.25vw,21px);line-height:1.38;letter-spacing:-.02em;color:var(--ink);margin:0;font-weight:400}
+.pend{
+  display:inline-block;border-bottom:1px dashed currentColor;color:var(--mut);
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding-bottom:3px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   01 · CAPA — preto, cartaz ancorado na base
+   ══════════════════════════════════════════════════════════ */
+.s1{--ground:var(--black);--acc:var(--betis-glow)}
+.s1 .pad{justify-content:flex-end}
+.s1 .vert{
+  position:absolute;left:clamp(22px,4.6vw,76px);top:50%;
+  transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+  font-size:10px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--mut);
+}
+.s1 .wrap{padding-left:clamp(30px,5vw,58px)}
+.s1 .rule{width:64px;height:3px;background:var(--betis-glow);margin-bottom:22px}
+.s1 .name{font-size:clamp(76px,17vw,260px);margin:14px 0 0;letter-spacing:-.055em}
+.s1 .q{max-width:30ch;margin-top:26px}
+.s1 .q p{margin:0;font-size:clamp(17px,1.9vw,30px);line-height:1.16;letter-spacing:-.03em;font-weight:500}
+.s1 .q p+p{color:var(--betis-glow);margin-top:4px}
+.s1 .foot{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+.s1 .foot span{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.s1 .foot span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--betis-glow);margin-right:9px;vertical-align:middle}
+
+/* ══════════════════════════════════════════════════════════
+   02 · O DOC — verde manto, manifesto centralizado
+   ══════════════════════════════════════════════════════════ */
+.s2{--ground:var(--betis-deep);--ink:#fff;--mut:rgba(255,255,255,.70);--line:rgba(255,255,255,.24)}
+.s2 .pad{justify-content:center;align-items:center;text-align:center}
+.s2 .mani{max-width:15ch;font-size:clamp(38px,6.6vw,104px)}
+.s2 .eyeb{margin-bottom:30px}
+.s2 .sub{max-width:44ch;margin:34px auto 0;font-size:clamp(14px,1.2vw,19px);line-height:1.45;color:rgba(255,255,255,.82)}
+.s2 .base{
+  position:absolute;left:0;right:0;bottom:clamp(84px,7vw,104px);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-top:1px solid var(--line);
+}
+.s2 .base div{padding:20px clamp(22px,4.6vw,76px);text-align:left}
+.s2 .base div+div{border-left:1px solid var(--line)}
+.s2 .base strong{display:block;font-size:clamp(15px,1.4vw,22px);font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+
+/* ══════════════════════════════════════════════════════════
+   03 · QUEM É ANTONY — preto, espinha horizontal
+   ══════════════════════════════════════════════════════════ */
+.s3{--ground:var(--black)}
+.s3 .pad{justify-content:space-between}
+.s3 h2{max-width:17ch;font-size:clamp(28px,4.4vw,64px)}
+.s3 h2 em{font-style:normal;color:var(--utd-glow)}
+.s3 .spine{position:relative;padding-top:56px;margin-bottom:8px}
+.s3 .track{
+  position:absolute;top:0;left:6%;right:6%;height:2px;
+  background:linear-gradient(90deg,var(--betis-glow) 0%,var(--betis-glow) 14%,var(--utd-glow) 46%,var(--utd-glow) 56%,var(--betis-glow) 90%);
+}
+.s3 .stops{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,48px)}
+.s3 .stop{position:relative;padding-top:4px}
+.s3 .stop::before{
+  content:"";position:absolute;top:-62px;left:50%;transform:translateX(-50%);
+  width:15px;height:15px;border-radius:50%;background:var(--dot);
+  box-shadow:0 0 0 6px var(--black);
+}
+.s3 .stop{text-align:center}
+.s3 .stop h3{margin:0;font-family:"Archivo",sans-serif;font-weight:800;font-variation-settings:"wdth" 78;
+  font-size:clamp(24px,3.4vw,50px);letter-spacing:-.04em;line-height:1;color:var(--dot)}
+.s3 .stop .eyeb{margin:0 0 10px}
+.s3 .stop p{margin:12px auto 0;max-width:26ch}
+.s3 .g{--dot:var(--betis-glow)}
+.s3 .r{--dot:var(--utd-glow)}
+
+/* ══════════════════════════════════════════════════════════
+   04 · RÁPIDO DEMAIS — vermelho United, cartaz de uma frase
+   ══════════════════════════════════════════════════════════ */
+.s4{--ground:var(--utd-red);--ink:#fff;--mut:rgba(255,255,255,.78);--line:rgba(255,255,255,.28)}
+.s4 .pad{justify-content:center}
+.s4 .big{font-size:clamp(64px,15.5vw,230px);line-height:.79;margin-left:-.02em}
+.s4 .big span{display:block}
+.s4 .big span:last-child{color:rgba(255,255,255,.42)}
+.s4 .cols{
+  position:absolute;left:clamp(22px,4.6vw,76px);right:clamp(22px,4.6vw,76px);
+  bottom:clamp(84px,7vw,104px);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,54px);
+  padding-top:20px;border-top:1px solid var(--line);
+}
+.s4 .cols p{color:rgba(255,255,255,.85)}
+.s4 .eyeb{position:absolute;top:clamp(22px,3.6vw,60px);left:clamp(22px,4.6vw,76px);color:rgba(255,255,255,.8)}
+
+/* ══════════════════════════════════════════════════════════
+   05 · ELENCO — papel branco, folha de créditos
+   ══════════════════════════════════════════════════════════ */
+.s5{--ground:var(--paper);--ink:#08090A;--mut:#6C7370;--line:rgba(0,0,0,.13)}
+.s5 .pad{padding-top:clamp(26px,4vw,56px)}
+.s5 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;
+  padding-bottom:18px;border-bottom:2px solid #08090A;margin-bottom:clamp(18px,2.4vw,34px)}
+.s5 .top h2{font-size:clamp(26px,3.6vw,54px);color:#08090A}
+.s5 .top p{max-width:34ch}
+.s5 .cred{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,5vw,84px)}
+.s5 .blk{break-inside:avoid;margin-bottom:22px}
+.s5 .blk .eyeb{color:#08090A;margin-bottom:10px}
+.s5 .cr{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:9px 0;border-bottom:1px solid var(--line)}
+.s5 .cr b{font-weight:600;font-size:clamp(14px,1.15vw,18px);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.s5 .cr b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--d);flex:0 0 auto}
+.s5 .cr i{font-style:normal;font-size:11px;letter-spacing:.06em;color:var(--mut);text-align:right}
+.s5 .gg{--d:var(--betis-deep)}
+.s5 .rr{--d:var(--utd-red)}
+.s5 .nn{--d:#B9BEBB}
+.s5 .note{margin-top:6px;padding:16px 18px;background:#08090A;color:#fff;border-radius:2px}
+.s5 .note p{color:rgba(255,255,255,.86)}
+.s5 .key{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px}
+.s5 .key span{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:8px}
+.s5 .key i{width:7px;height:7px;border-radius:50%;display:block}
+
+/* ══════════════════════════════════════════════════════════
+   06 · TRÊS MOVIMENTOS — tríptico full-bleed
+   ══════════════════════════════════════════════════════════ */
+.s6{--ground:var(--black)}
+.s6 .tri{position:absolute;inset:0 0 clamp(70px,6vw,86px);display:grid;grid-template-columns:repeat(3,1fr)}
+.s6 .pan{
+  padding:clamp(26px,3.2vw,52px) clamp(18px,2vw,36px);
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-right:1px solid rgba(255,255,255,.14);overflow:hidden;
+}
+.s6 .pan:last-child{border-right:0}
+.s6 .p1{background:var(--black)}
+.s6 .p2{background:var(--utd-red)}
+.s6 .p3{background:var(--betis-deep)}
+.s6 .mv{font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 68;
+  font-size:clamp(48px,7.4vw,124px);line-height:.8;letter-spacing:-.05em;color:rgba(255,255,255,.20)}
+.s6 .p1 .mv{color:rgba(255,255,255,.16)}
+.s6 .pan h3{margin:0 0 12px;font-family:"Archivo",sans-serif;font-weight:800;font-variation-settings:"wdth" 82;
+  font-size:clamp(22px,2.7vw,42px);line-height:.95;letter-spacing:-.04em;color:#fff}
+.s6 .pan p{color:rgba(255,255,255,.76)}
+.s6 .p1 h3{color:var(--betis-glow)}
+.s6 .cap6{position:absolute;left:clamp(22px,4.6vw,76px);top:clamp(22px,3.6vw,60px);z-index:4}
+
+/* ══════════════════════════════════════════════════════════
+   07 · DIFERENCIAL — preto, numerais vazados
+   ══════════════════════════════════════════════════════════ */
+.s7{--ground:var(--black)}
+.s7 .pad{justify-content:center}
+.s7 h2{font-size:clamp(26px,3.6vw,54px);max-width:20ch;margin-bottom:clamp(18px,2.4vw,34px)}
+.s7 .it{display:flex;align-items:center;gap:clamp(16px,2.4vw,40px);padding:clamp(9px,1vw,15px) 0;border-top:1px solid var(--line)}
+.s7 .it:last-child{border-bottom:1px solid var(--line)}
+.s7 .it .n{
+  font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 70;
+  font-size:clamp(30px,4.4vw,68px);line-height:.8;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1.6px var(--betis-glow);flex:0 0 auto;min-width:1.9em;
+}
+.s7 .it p{margin:0;font-size:clamp(13px,1.15vw,19px);line-height:1.3;letter-spacing:-.02em;color:#fff;font-weight:400}
+.s7 .it p em{font-style:normal;color:var(--utd-glow)}
+.s7 .tail{margin-top:22px;max-width:52ch}
+
+/* ══════════════════════════════════════════════════════════
+   08 · ESTÁGIO — verde noite, barra de progresso
+   ══════════════════════════════════════════════════════════ */
+.s8{--ground:var(--betis-night);--ink:#fff;--mut:rgba(255,255,255,.66);--line:rgba(255,255,255,.22)}
+.s8 .pad{justify-content:center}
+.s8 h2{font-size:clamp(30px,4.6vw,68px);max-width:16ch}
+.s8 .bar{display:flex;height:clamp(64px,7vw,104px);margin:clamp(26px,3.4vw,48px) 0 0;border-radius:3px;overflow:hidden}
+.s8 .fill{flex:0 0 72%;background:var(--betis-live);display:flex;align-items:flex-end;padding:14px 18px;position:relative}
+.s8 .fill span{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#04160D}
+.s8 .rest{flex:1 1 auto;border:1px dashed rgba(255,255,255,.38);border-left:0;display:flex;align-items:flex-end;padding:14px 18px}
+.s8 .rest span{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.s8 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,56px);margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.s8 .duo strong{display:block;font-size:clamp(15px,1.4vw,22px);font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.s8 .flags{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.s8 .flags i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:99px;padding:7px 14px;color:rgba(255,255,255,.8)}
+
+/* ══════════════════════════════════════════════════════════
+   09 · ALCANCE — três faixas full-bleed
+   ══════════════════════════════════════════════════════════ */
+.s9{--ground:var(--black)}
+.s9 .head9{position:absolute;top:0;left:0;right:0;padding:clamp(22px,3.6vw,54px) clamp(22px,4.6vw,76px) clamp(14px,1.8vw,24px);z-index:3}
+.s9 .head9 h2{font-size:clamp(22px,3vw,44px);max-width:22ch}
+.s9 .bands{position:absolute;left:0;right:0;top:clamp(96px,13vw,190px);bottom:clamp(74px,6.4vw,92px);display:flex;flex-direction:column}
+.s9 .bd{
+  flex:1 1 0;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:0 clamp(22px,4.6vw,76px);min-height:0;
+}
+.s9 .b1{background:var(--betis-deep)}
+.s9 .b2{background:var(--utd-red)}
+.s9 .b3{background:var(--black);border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)}
+.s9 .bd h3{margin:0;font-family:"Archivo",sans-serif;font-weight:900;font-variation-settings:"wdth" 72;
+  font-size:clamp(30px,5.6vw,88px);line-height:.85;letter-spacing:-.05em;color:#fff}
+.s9 .b3 h3{color:var(--betis-glow)}
+.s9 .bd p{margin:0;max-width:30ch;font-size:clamp(12px,.95vw,16px);line-height:1.4;color:rgba(255,255,255,.8);text-align:right}
+.s9 .metrics{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid rgba(255,255,255,.18)}
+.s9 .metrics div{padding:14px clamp(22px,4.6vw,76px)}
+.s9 .metrics div+div{border-left:1px solid rgba(255,255,255,.18)}
+
+/* ══════════════════════════════════════════════════════════
+   10 · FECHAMENTO — verde vivo, tipo preta (inversão total)
+   ══════════════════════════════════════════════════════════ */
+.s10{--ground:var(--betis-live);--ink:#06170E;--mut:rgba(6,23,14,.68);--line:rgba(6,23,14,.22)}
+.s10 .pad{justify-content:center}
+.s10 h2{font-size:clamp(42px,7.6vw,120px);max-width:11ch;color:#06170E}
+.s10 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,36px);
+  margin:clamp(26px,3.4vw,46px) 0 0;padding-top:20px;border-top:2px solid #06170E}
+.s10 .three p{margin:0;font-size:clamp(13px,1.2vw,19px);line-height:1.28;letter-spacing:-.02em;color:#06170E;font-weight:500}
+.s10 .cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:clamp(24px,3vw,42px)}
+.s10 .btn{display:inline-flex;align-items:center;gap:10px;background:#06170E;color:#fff;border:0;
+  font-family:"Inter",sans-serif;font-size:14px;font-weight:600;letter-spacing:-.01em;
+  padding:14px 26px;border-radius:99px;cursor:pointer}
+.s10 .pend{color:rgba(6,23,14,.6)}
+
+/* ══════════════════════════════════════════════════════════
+   RÉGUA DO ARCO — a partitura cromática do filme
+   ══════════════════════════════════════════════════════════ */
+.rail{position:absolute;left:0;right:0;bottom:0;z-index:20;
+  display:flex;align-items:center;gap:clamp(12px,2vw,26px);
+  padding:0 clamp(22px,4.6vw,76px) clamp(18px,2.2vw,28px)}
+.rail .lb{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  white-space:nowrap;min-width:104px;color:var(--rmut)}
+.arc{display:flex;flex:1 1 auto;gap:4px;min-width:0}
+.seg{flex:1 1 0;height:3px;border-radius:99px;border:0;padding:0;cursor:pointer;position:relative;
+  background:var(--rdim);transition:background .3s ease,transform .2s ease}
+.seg::after{content:"";position:absolute;inset:-14px 0}
+.seg:hover{transform:scaleY(2.4)}
+.seg.cur{transform:scaleY(3)}
+.seg.p-neutral{background:var(--rink)}
+.seg.p-green{background:var(--betis-glow)}
+.seg.p-red{background:var(--utd-glow)}
+.seg.p-mixed{background:linear-gradient(90deg,var(--utd-glow),var(--betis-glow))}
+.nav{display:flex;gap:8px;flex:0 0 auto}
+.nav button{width:38px;height:38px;border-radius:50%;background:transparent;
+  border:1px solid var(--rdim);color:var(--rink);cursor:pointer;display:grid;place-items:center;
+  transition:background .2s ease,opacity .2s ease}
+.nav button:hover{background:var(--rdim)}
+.nav button[disabled]{opacity:.3;cursor:default}
+.nav svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.rail{--rink:#fff;--rmut:rgba(255,255,255,.6);--rdim:rgba(255,255,255,.22)}
+.rail[data-tone="light"]{--rink:#08090A;--rmut:rgba(8,9,10,.55);--rdim:rgba(8,9,10,.18)}
+.rail[data-tone="light"] .seg.p-neutral{background:#08090A}
+.rail[data-tone="lime"]{--rink:#06170E;--rmut:rgba(6,23,14,.6);--rdim:rgba(6,23,14,.22)}
+.rail[data-tone="lime"] .seg.p-green{background:#06170E}
+.rail[data-tone="lime"] .seg.p-neutral{background:#06170E}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════════════════════════ */
+@media (max-width:900px){
+  .s2 .base,.s4 .cols,.s5 .cred,.s8 .duo,.s9 .metrics,.s10 .three{grid-template-columns:1fr}
+  .s2 .base div+div,.s9 .metrics div+div{border-left:0;border-top:1px solid var(--line)}
+  .s2 .base{position:static;margin-top:30px}
+  .s2 .pad{justify-content:center}
+  .s4 .cols{position:static;margin-top:26px}
+  .s4 .pad{justify-content:flex-end}
+  .s6 .tri{grid-template-columns:1fr;grid-template-rows:repeat(3,1fr)}
+  .s6 .pan{border-right:0;border-bottom:1px solid rgba(255,255,255,.14);flex-direction:row;align-items:center;gap:18px}
+  .s6 .mv{font-size:44px;flex:0 0 auto}
+  .s6 .pan>div{flex:1 1 auto}
+  .s3 .stops{grid-template-columns:1fr;gap:26px}
+  .s3 .track{display:none}
+  .s3 .stop{text-align:left;border-left:2px solid var(--dot);padding-left:16px}
+  .s3 .stop::before{display:none}
+  .s3 .stop p{margin-left:0}
+  .s9 .bd{flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding-top:12px;padding-bottom:12px}
+  .s9 .bd p{text-align:left}
+  .rail .lb{display:none}
+}
+@media (max-width:560px){
+  .pad{padding:20px 18px 88px}
+  .s1 .wrap{padding-left:26px}
+  .s5 .top{display:block}
+  .s5 .top p{margin-top:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+
+<div class="deck" id="deck">
+
+<!-- ═══════════ 01 · CAPA ═══════════ -->
+<section class="s s1" data-lb="Capa" data-p="neutral" data-tone="dark">
+  <div class="num"><b>01</b> ⁄ 10</div>
+  <div class="vert">Documentário · Pitch de aquisição</div>
+  <div class="pad">
+    <div class="wrap">
+      <div class="up">
+        <div class="rule"></div>
+        <p class="eyeb">Longa ou série · formato em aberto</p>
+        <h1 class="dsp name">ANTONY</h1>
+      </div>
+      <div class="q up">
+        <p>A fama chegou rápido demais.</p>
+        <p>O que sobrou do Antony da favela?</p>
+      </div>
+      <div class="foot up">
+        <span>Título a definir</span>
+        <span>Captação concluída</span>
+        <span>Trailer finalizado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 02 · O QUE É O DOC ═══════════ -->
+<section class="s s2" data-lb="O projeto" data-p="green" data-tone="dark">
+  <div class="num"><b>02</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="up" style="width:100%">
+      <p class="eyeb">O que é o doc</p>
+      <h2 class="dsp wide mani" style="margin:0 auto">Íntimo, cinematográfico, pronto pra decidir.</h2>
+      <p class="sub">Um documentário exclusivo que acompanha Antony em um dos momentos mais decisivos e pessoais da sua carreira.</p>
+    </div>
+  </div>
+  <div class="base">
+    <div><strong>Não é uma ideia.</strong><p class="tx">A maior parte da captação já está concluída, com trailer finalizado.</p></div>
+    <div><strong>É um produto pronto.</strong><p class="tx">Estágio avançado, disponível para decisão de aquisição imediata.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ 03 · QUEM É ANTONY ═══════════ -->
+<section class="s s3" data-lb="O personagem" data-p="neutral" data-tone="dark">
+  <div class="num"><b>03</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="up">
+      <p class="eyeb" style="margin-bottom:20px">Quem é Antony</p>
+      <h2 class="dsp">Uma ascensão rápida.<br>Talvez <em>rápida demais</em>.</h2>
+      <p class="tx" style="margin-top:20px;max-width:52ch">Da favela a um dos brasileiros mais visados do futebol europeu — uma subida que colocou em teste não só a carreira, mas a própria identidade.</p>
+    </div>
+    <div class="spine up">
+      <div class="track"></div>
+      <div class="stops">
+        <div class="stop g"><p class="eyeb">Ponto de partida</p><h3>A favela</h3><p class="tx">A origem que o filme volta a registrar, com câmera dentro.</p></div>
+        <div class="stop r"><p class="eyeb">A explosão</p><h3>Inglaterra</h3><p class="tx">Exposição máxima, pressão máxima, tudo ao mesmo tempo.</p></div>
+        <div class="stop g"><p class="eyeb">O reencontro</p><h3>Espanha</h3><p class="tx">Onde a história volta a respirar e o arco se fecha.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 04 · RÁPIDO DEMAIS ═══════════ -->
+<section class="s s4" data-lb="O conflito" data-p="red" data-tone="dark">
+  <div class="num"><b>04</b> ⁄ 10</div>
+  <p class="eyeb">A história · o conflito central</p>
+  <div class="pad">
+    <h2 class="dsp cond big up"><span>RÁPIDO</span><span>DEMAIS</span></h2>
+  </div>
+  <div class="cols">
+    <p class="tx">Tudo aconteceu rápido demais: o sucesso, a exposição, a pressão. No meio disso, uma desconexão crescente entre o Antony que o mundo vê e o Antony da favela.</p>
+    <p class="tx">O arco acompanha essa distância se abrindo — e, no final, o caminho de volta: <b>a reconexão com as raízes.</b></p>
+  </div>
+</section>
+
+<!-- ═══════════ 05 · ELENCO ═══════════ -->
+<section class="s s5" data-lb="O elenco" data-p="neutral" data-tone="light">
+  <div class="num"><b>05</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="top up">
+      <h2 class="dsp">Quem participa</h2>
+      <p class="tx">Quatro camadas de acesso — emocional, esportiva, institucional e estratégica. Raro num documentário de atleta, que costuma ficar preso ao vestiário.</p>
+    </div>
+    <div class="cred up">
+      <div>
+        <div class="blk">
+          <p class="eyeb">A voz que conduz</p>
+          <div class="cr gg"><b>Antony</b><i>Entrevista extensa e central</i></div>
+        </div>
+        <div class="blk">
+          <p class="eyeb">Família · núcleo emocional</p>
+          <div class="cr gg"><b>Pai</b><i>Raiz</i></div>
+          <div class="cr gg"><b>Mãe</b><i>Raiz</i></div>
+          <div class="cr gg"><b>Irmão</b><i>Raiz</i></div>
+          <div class="cr gg"><b>Irmã</b><i>Raiz</i></div>
+        </div>
+      </div>
+      <div>
+        <div class="blk">
+          <p class="eyeb">Vestiário e carreira em campo</p>
+          <div class="cr gg"><b>Isco</b><i>Companheiro de elenco</i></div>
+          <div class="cr gg"><b>Bartra</b><i>Companheiro de elenco</i></div>
+          <div class="cr rr"><b>Dalot</b><i>Companheiro de elenco</i></div>
+          <div class="cr gg"><b>Adrián</b><i>Goleiro</i></div>
+          <div class="cr gg"><b>Pellegrini</b><i>Técnico</i></div>
+        </div>
+        <div class="blk">
+          <p class="eyeb">Mercado, bastidores e decisões</p>
+          <div class="cr nn"><b>Fabrizio Romano</b><i>Visão de mercado</i></div>
+          <div class="cr nn"><b>Junior Pedroso</b><i>Empresário</i></div>
+          <div class="cr nn"><b>Dr. Cristiano</b><i>Advogado</i></div>
+        </div>
+      </div>
+    </div>
+    <div class="note up">
+      <p class="tx">Nenhum clube participa oficialmente do projeto. O acesso é do lado do atleta — relato pessoal, sem filtro institucional.</p>
+    </div>
+    <div class="key up">
+      <span><i style="background:#00663A"></i>Espanha · Betis</span>
+      <span><i style="background:#DA291C"></i>Inglaterra · United</span>
+      <span><i style="background:#B9BEBB"></i>Fora de campo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 06 · TRÊS MOVIMENTOS ═══════════ -->
+<section class="s s6" data-lb="A narrativa" data-p="mixed" data-tone="dark">
+  <div class="num"><b>06</b> ⁄ 10</div>
+  <p class="eyeb cap6">Estrutura da narrativa · três movimentos</p>
+  <div class="tri">
+    <div class="pan p1"><div class="mv">01</div><div><h3>A ascensão</h3><p class="tx">A saída da favela e a explosão de carreira na Inglaterra e na Espanha.</p></div></div>
+    <div class="pan p2"><div class="mv">02</div><div><h3>A desconexão</h3><p class="tx">A pressão, a exposição e a distância crescente do Antony original.</p></div></div>
+    <div class="pan p3"><div class="mv">03</div><div><h3>A volta pra casa</h3><p class="tx">A reconexão com as raízes, encerrando o arco com redenção.</p></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ 07 · DIFERENCIAL ═══════════ -->
+<section class="s s7" data-lb="O diferencial" data-p="neutral" data-tone="dark">
+  <div class="num"><b>07</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="up">
+      <p class="eyeb" style="margin-bottom:18px">Por que esse material é diferente</p>
+      <h2 class="dsp">Cinco coisas que já estão gravadas.</h2>
+    </div>
+    <div class="up">
+      <div class="it"><span class="n">01</span><p>Imagens 100% exclusivas, incluindo cenas filmadas nas raízes dele, <b>na favela</b>.</p></div>
+      <div class="it"><span class="n">02</span><p>Filmagem realizada na <em>Inglaterra</em> e na Espanha, cobrindo as duas pontas da carreira.</p></div>
+      <div class="it"><span class="n">03</span><p>Um filmaker acompanhou Antony durante todo o processo — acesso contínuo, não pontual.</p></div>
+      <div class="it"><span class="n">04</span><p>Trailer já pronto, comprovando qualidade de imagem, ritmo e força narrativa.</p></div>
+      <div class="it"><span class="n">05</span><p>Acesso em múltiplas camadas: família, vestiário, mercado e bastidores jurídicos.</p></div>
+    </div>
+    <p class="tx tail up">Tom autoral e intimista, no território dos documentários de atleta que unem alta performance esportiva a uma história pessoal profunda.</p>
+  </div>
+</section>
+
+<!-- ═══════════ 08 · ESTÁGIO ═══════════ -->
+<section class="s s8" data-lb="O estágio" data-p="green" data-tone="dark">
+  <div class="num"><b>08</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="up">
+      <p class="eyeb" style="margin-bottom:20px">Estágio do projeto</p>
+      <h2 class="dsp">Risco de aquisição reduzido.</h2>
+    </div>
+    <div class="bar up">
+      <div class="fill"><span>Captação concluída — inclui as cenas na favela</span></div>
+      <div class="rest"><span>Em aberto</span></div>
+    </div>
+    <div class="duo up">
+      <div>
+        <strong>O que já está no card</strong>
+        <p class="tx">O material mais sensível e valioso já foi filmado: as cenas na favela, que ancoram emocionalmente toda a história.</p>
+      </div>
+      <div>
+        <strong>O que fica flexível</strong>
+        <p class="tx">Formato final e data de lançamento seguem em aberto, para se adequar ao catálogo da plataforma parceira.</p>
+        <div class="flags"><i>Longa</i><i>Série</i><i>Janela de lançamento</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 09 · ALCANCE ═══════════ -->
+<section class="s s9" data-lb="O alcance" data-p="neutral" data-tone="dark">
+  <div class="num"><b>09</b> ⁄ 10</div>
+  <div class="head9">
+    <p class="eyeb" style="margin-bottom:14px">Potencial de alcance</p>
+    <h2 class="dsp">Três mercados que a própria história atravessa.</h2>
+  </div>
+  <div class="bands">
+    <div class="bd b1"><h3>Brasil</h3><p>A origem e a maior base de fãs — o mercado que reconhece a favela na tela.</p></div>
+    <div class="bd b2"><h3>Inglaterra</h3><p>O auge da exposição global e o pico de cobertura de imprensa.</p></div>
+    <div class="bd b3"><h3>Espanha</h3><p>O capítulo atual da carreira, com o elenco do filme dentro do vestiário.</p></div>
+  </div>
+  <div class="metrics">
+    <div><p class="eyeb" style="margin-bottom:8px">Instagram · seguidores</p><span class="pend">Número a preencher</span></div>
+    <div><p class="eyeb" style="margin-bottom:8px">TikTok · seguidores</p><span class="pend">Número a preencher</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ 10 · FECHAMENTO ═══════════ -->
+<section class="s s10" data-lb="A decisão" data-p="green" data-tone="lime">
+  <div class="num"><b>10</b> ⁄ 10</div>
+  <div class="pad">
+    <div class="up">
+      <p class="eyeb" style="margin-bottom:20px">Fechamento</p>
+      <h2 class="dsp">A história já foi filmada.</h2>
+    </div>
+    <div class="three up">
+      <p>As raízes já foram registradas.</p>
+      <p>O trailer já prova o potencial.</p>
+      <p>Falta a decisão de transformar isso num original de peso.</p>
+    </div>
+    <div class="cta up">
+      <button class="btn" type="button">Agendar conversa
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </button>
+      <span class="pend">Contato e próximos passos</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RÉGUA ═══════════ -->
+<div class="rail" id="rail" data-tone="dark">
+  <div class="lb" id="lb">Capa</div>
+  <div class="arc" id="arc"></div>
+  <div class="nav">
+    <button id="prev" type="button" aria-label="Slide anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button id="next" type="button" aria-label="Próximo slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.s'));
+  var arc=document.getElementById('arc'), rail=document.getElementById('rail');
+  var lb=document.getElementById('lb'), prev=document.getElementById('prev'), next=document.getElementById('next');
+  var i=0;
+
+  slides.forEach(function(s,n){
+    var b=document.createElement('button');
+    b.className='seg'; b.type='button';
+    b.setAttribute('aria-label','Slide '+(n+1)+' — '+s.dataset.lb);
+    b.addEventListener('click',function(){go(n)});
+    arc.appendChild(b);
+  });
+  var segs=[].slice.call(arc.children);
+
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){
+      s.classList.toggle('on',k===i);
+      s.setAttribute('aria-hidden',k===i?'false':'true');
+    });
+    segs.forEach(function(g,k){
+      g.className='seg'+(k<=i?' p-'+slides[k].dataset.p:'')+(k===i?' cur':'');
+    });
+    rail.setAttribute('data-tone',slides[i].dataset.tone);
+    lb.textContent=slides[i].dataset.lb;
+    prev.disabled=i===0; next.disabled=i===slides.length-1;
+    var p=slides[i].querySelector('.pad'); if(p)p.scrollTop=0;
+  }
+
+  prev.addEventListener('click',function(){go(i-1)});
+  next.addEventListener('click',function(){go(i+1)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    else if(e.key==='Home'){e.preventDefault();go(0)}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1)}
+  });
+
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.6)go(dx<0?i+1:i-1);
+    x0=null;y0=null;
+  },{passive:true});
+
+  go(0);
+})();
+</script>
