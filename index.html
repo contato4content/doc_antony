@@ -133,11 +133,10 @@ body{
 .s2 .sub{max-width:44ch;margin:34px auto 0;font-size:clamp(14px,1.2vw,19px);line-height:1.45;color:rgba(255,255,255,.82)}
 .s2 .base{
   position:absolute;left:0;right:0;bottom:clamp(84px,7vw,104px);
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  display:grid;grid-template-columns:1fr;gap:0;
   border-top:1px solid var(--line);
 }
-.s2 .base div{padding:20px clamp(22px,4.6vw,76px);text-align:left}
-.s2 .base div+div{border-left:1px solid var(--line)}
+.s2 .base div{padding:20px clamp(22px,4.6vw,76px);text-align:center}
 .s2 .base strong{display:block;font-size:clamp(15px,1.4vw,22px);font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
 
 /* ══════════════════════════════════════════════════════════
@@ -201,27 +200,27 @@ body{
    05 · ELENCO — papel branco, folha de créditos
    ══════════════════════════════════════════════════════════ */
 .s5{--ground:var(--paper);--ink:#08090A;--mut:#6C7370;--line:rgba(0,0,0,.13)}
-.s5 .pad{padding-top:clamp(20px,3vw,40px)}
-.s5 .mosaic{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:clamp(16px,2.2vw,26px)}
-.s5 .mosaic img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:2px;filter:grayscale(.25) contrast(1.02)}
+.s5 .pad{padding-top:clamp(14px,2.2vw,28px)}
+.s5 .mosaic{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;height:clamp(44px,7.5vh,100px);margin-bottom:clamp(10px,1.4vw,16px)}
+.s5 .mosaic img{width:100%;height:100%;object-fit:cover;display:block;border-radius:2px;filter:grayscale(.25) contrast(1.02)}
 .s5 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;
-  padding-bottom:12px;border-bottom:2px solid #08090A;margin-bottom:clamp(14px,1.8vw,24px)}
+  padding-bottom:8px;border-bottom:2px solid #08090A;margin-bottom:clamp(10px,1.4vw,18px)}
 .s5 .top h2{font-size:clamp(26px,3.6vw,54px);color:#08090A}
 .s5 .top p{max-width:34ch}
 .s5 .cred{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,5vw,84px)}
-.s5 .blk{break-inside:avoid;margin-bottom:12px}
-.s5 .blk .eyeb{color:#08090A;margin-bottom:10px}
+.s5 .blk{break-inside:avoid;margin-bottom:8px}
+.s5 .blk .eyeb{color:#08090A;margin-bottom:6px}
 .s5 .cr{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-  padding:6px 0;border-bottom:1px solid var(--line)}
+  padding:4px 0;border-bottom:1px solid var(--line)}
 .s5 .cr b{font-weight:600;font-size:clamp(14px,1.15vw,18px);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
 .s5 .cr b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--d);flex:0 0 auto}
 .s5 .cr i{font-style:normal;font-size:11px;letter-spacing:.06em;color:var(--mut);text-align:right}
 .s5 .gg{--d:var(--betis-deep)}
 .s5 .rr{--d:var(--utd-red)}
 .s5 .nn{--d:#B9BEBB}
-.s5 .note{margin-top:8px;padding:12px 16px;background:#08090A;color:#fff;border-radius:2px}
+.s5 .note{margin-top:6px;padding:9px 14px;background:#08090A;color:#fff;border-radius:2px}
 .s5 .note p{color:rgba(255,255,255,.86)}
-.s5 .key{display:flex;gap:20px;flex-wrap:wrap;margin-top:10px}
+.s5 .key{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px}
 .s5 .key span{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:8px}
 .s5 .key i{width:7px;height:7px;border-radius:50%;display:block}
 
@@ -387,7 +386,8 @@ body{
    ══════════════════════════════════════════════════════════ */
 @media (max-width:900px){
   .s2 .base,.s4 .cols,.s5 .cred,.s8 .duo,.s11 .three,.s3 .top3{grid-template-columns:1fr}
-  .s5 .mosaic{grid-template-columns:repeat(5,1fr)}
+  .s5 .mosaic{grid-template-columns:repeat(6,1fr);height:auto}
+  .s5 .mosaic img{height:auto;aspect-ratio:1/1}
   .s10 .dig,.s10 .stats3,.s10 .foot3{grid-template-columns:1fr}
   .s2 .base div+div,.s9 .metrics div+div{border-left:0;border-top:1px solid var(--line)}
   .s2 .base{position:static;margin-top:30px}
@@ -412,7 +412,7 @@ body{
   .s1 .wrap{padding-left:26px}
   .s5 .top{display:block}
   .s5 .top p{margin-top:12px}
-  .s5 .mosaic{grid-template-columns:repeat(4,1fr)}
+  .s5 .mosaic{grid-template-columns:repeat(4,1fr);height:auto}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -455,7 +455,6 @@ body{
     </div>
   </div>
   <div class="base">
-    <div><strong>Não é uma ideia.</strong><p class="tx">A maior parte da captação já está concluída, com trailer finalizado.</p></div>
     <div><strong>É um produto pronto.</strong><p class="tx">Estágio avançado, disponível para decisão de aquisição imediata.</p></div>
   </div>
 </section>
@@ -514,7 +513,6 @@ body{
   <div class="num"><b>05</b> ⁄ 11</div>
   <div class="pad">
     <div class="mosaic up">
-      <img src="img/elenco/antony.jpg" alt="Antony">
       <img src="img/elenco/antony2.jpg" alt="Antony">
       <img src="img/elenco/antony-jose.jpg" alt="Antony e José">
       <img src="img/elenco/isco.jpg" alt="Isco">
@@ -526,7 +524,6 @@ body{
       <img src="img/elenco/junior.jpg" alt="Junior Pedroso">
       <img src="img/elenco/pai.jpg" alt="Pai">
       <img src="img/elenco/irma-mae.jpg" alt="Irmã e mãe">
-      <img src="img/elenco/irmao.jpg" alt="Irmão">
       <img src="img/elenco/emerson.jpg" alt="Emerson">
     </div>
     <div class="top up">
@@ -552,7 +549,7 @@ body{
           <div class="cr gg"><b>Isco</b><i>Companheiro de elenco</i></div>
           <div class="cr gg"><b>Bartra</b><i>Companheiro de elenco</i></div>
           <div class="cr rr"><b>Dalot</b><i>Companheiro de elenco</i></div>
-          <div class="cr gg"><b>Adrián</b><i>Goleiro</i></div>
+          <div class="cr gg"><b>Adrián</b><i>Companheiro de elenco</i></div>
           <div class="cr gg"><b>Pellegrini</b><i>Técnico</i></div>
         </div>
         <div class="blk">
@@ -581,7 +578,7 @@ body{
   <div class="tri">
     <div class="pan p1"><div class="mv">01</div><img src="./antony-860x1006-mt0ijwu5-fxrs.webp" alt="antony-860x1006" width="860" height="1006" style="max-width:100%;height:448px;display:block;object-fit:cover;aspect-ratio:860/1006;width:311px;border-width:12px;border-style:solid;border-color:#575757"><div><h3>A ascensão</h3><p class="tx">A saída da favela e a explosão de carreira no Brasil, Holanda, Inglaterra.</p></div></div>
     <div class="pan p2"><div class="mv">02</div><img src="./264188244-manchester-united-v-wolverhamp-mt0ig2bm-6b86.webp" alt="264188244-manchester-united-v-wolverhamp" width="1200" height="1600" style="max-width:100%;height:448px;display:block;object-fit:cover;width:311px;aspect-ratio:1200/1600;border-width:12px;border-style:solid;border-color:#9D0000"><div><h3>A desconexão</h3><p class="tx">A pressão, a exposição e a distância crescente do Antony original.</p></div></div>
-    <div class="pan p3" style="position:relative"><div class="mv">03</div><img src="./antony-comemorando-gol-pelo-real-betis-a-mt0ihymm-9i3m.webp" alt="antony-comemorando-gol-pelo-real-betis-a" width="950" height="593" style="max-width:100%;height:448px;display:block;object-fit:cover;width:311px;aspect-ratio:950/593;border-width:12px;border-style:solid;border-color:#FFFFFF"><div><h3>A volta pra casa</h3><p class="tx">A reconexão com as raízes, encerrando o arco com redenção.</p></div></div>
+    <div class="pan p3" style="position:relative"><div class="mv">03</div><img src="./antony-comemorando-gol-pelo-real-betis-a-mt0ihymm-9i3m.webp" alt="antony-comemorando-gol-pelo-real-betis-a" width="950" height="593" style="max-width:100%;height:448px;display:block;object-fit:cover;width:311px;aspect-ratio:950/593;border-width:12px;border-style:solid;border-color:#FFFFFF"><div><h3>Reconexão</h3><p class="tx">A reconexão com as raízes, encerrando o arco com redenção.</p></div></div>
   </div>
 </section>
 
