@@ -202,6 +202,8 @@ body{
    ══════════════════════════════════════════════════════════ */
 .s5{--ground:var(--paper);--ink:#08090A;--mut:#6C7370;--line:rgba(0,0,0,.13)}
 .s5 .pad{padding-top:clamp(20px,3vw,40px)}
+.s5 .mosaic{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:clamp(16px,2.2vw,26px)}
+.s5 .mosaic img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:2px;filter:grayscale(.25) contrast(1.02)}
 .s5 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;
   padding-bottom:12px;border-bottom:2px solid #08090A;margin-bottom:clamp(14px,1.8vw,24px)}
 .s5 .top h2{font-size:clamp(26px,3.6vw,54px);color:#08090A}
@@ -385,6 +387,7 @@ body{
    ══════════════════════════════════════════════════════════ */
 @media (max-width:900px){
   .s2 .base,.s4 .cols,.s5 .cred,.s8 .duo,.s11 .three,.s3 .top3{grid-template-columns:1fr}
+  .s5 .mosaic{grid-template-columns:repeat(5,1fr)}
   .s10 .dig,.s10 .stats3,.s10 .foot3{grid-template-columns:1fr}
   .s2 .base div+div,.s9 .metrics div+div{border-left:0;border-top:1px solid var(--line)}
   .s2 .base{position:static;margin-top:30px}
@@ -409,6 +412,7 @@ body{
   .s1 .wrap{padding-left:26px}
   .s5 .top{display:block}
   .s5 .top p{margin-top:12px}
+  .s5 .mosaic{grid-template-columns:repeat(4,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -509,6 +513,22 @@ body{
 <section class="s s5" data-lb="O elenco" data-p="neutral" data-tone="light">
   <div class="num"><b>05</b> ⁄ 11</div>
   <div class="pad">
+    <div class="mosaic up">
+      <img src="img/elenco/antony.jpg" alt="Antony">
+      <img src="img/elenco/antony2.jpg" alt="Antony">
+      <img src="img/elenco/antony-jose.jpg" alt="Antony e José">
+      <img src="img/elenco/isco.jpg" alt="Isco">
+      <img src="img/elenco/bartra.jpg" alt="Bartra">
+      <img src="img/elenco/dalot.jpg" alt="Dalot">
+      <img src="img/elenco/adrian.jpg" alt="Adrián">
+      <img src="img/elenco/pelegrini.jpg" alt="Pellegrini">
+      <img src="img/elenco/fabrizio.jpg" alt="Fabrizio Romano">
+      <img src="img/elenco/junior.jpg" alt="Junior Pedroso">
+      <img src="img/elenco/pai.jpg" alt="Pai">
+      <img src="img/elenco/irma-mae.jpg" alt="Irmã e mãe">
+      <img src="img/elenco/irmao.jpg" alt="Irmão">
+      <img src="img/elenco/emerson.jpg" alt="Emerson">
+    </div>
     <div class="top up">
       <h2 class="dsp">Quem participa</h2>
     </div>
